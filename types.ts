@@ -9,6 +9,19 @@ export interface BlogPost {
   slug?: string;
   created_at?: string;
   updated_at?: string;
+  // SEO fields
+  meta_title?: string;
+  meta_description?: string;
+  og_image?: string;
+  og_title?: string;
+  og_description?: string;
+  twitter_card_type?: string;
+  twitter_title?: string;
+  twitter_description?: string;
+  twitter_image?: string;
+  canonical_url?: string;
+  robots?: string;
+  keywords?: string[];
 }
 
 export type WorkType = 'project' | 'blog';

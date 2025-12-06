@@ -4,6 +4,7 @@ import { Menu, X, ArrowRight, Github, Twitter, Linkedin, Sparkles, Code2, Cpu, S
 import { BlogPost, WorkItem, ViewState } from './types';
 import { supabase } from './supabaseClient';
 import AdminPanel from './AdminPanel';
+import SEOHead from './SEOHead';
 
 // --- Constants ---
 
@@ -519,6 +520,23 @@ const PostDetail = ({ post, onBack }: { post: BlogPost | null, onBack: () => voi
 
   return (
     <article className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-cyan-500/30">
+      <SEOHead
+        title={post.meta_title || post.title}
+        description={post.meta_description || post.summary}
+        canonical={post.canonical_url || `/blog/${post.slug || post.id}`}
+        ogTitle={post.og_title || post.title}
+        ogDescription={post.og_description || post.summary}
+        ogImage={post.og_image}
+        ogType="article"
+        twitterTitle={post.twitter_title}
+        twitterDescription={post.twitter_description}
+        twitterImage={post.twitter_image}
+        twitterCard={post.twitter_card_type as any || 'summary_large_image'}
+        robots={post.robots}
+        keywords={post.keywords || post.tags}
+        publishedTime={post.date}
+        modifiedTime={post.updated_at}
+      />
       <ScrollProgress />
       
       {/* Top Nav Placeholder / Spacing */}
