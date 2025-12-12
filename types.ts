@@ -9,6 +9,7 @@ export interface BlogPost {
   slug?: string;
   created_at?: string;
   updated_at?: string;
+  featured_image?: string;
   // SEO fields
   meta_title?: string;
   meta_description?: string;
@@ -37,6 +38,11 @@ export interface WorkItem {
   image: string;
   date?: string; // Specific to blog
   link?: string; // External link for projects
+  slug?: string;
+  published?: boolean;
+  display_order?: number;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export enum ViewState {

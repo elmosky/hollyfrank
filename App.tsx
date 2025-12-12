@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Menu, X, ArrowRight, Github, Twitter, Linkedin, Sparkles, Code2, Cpu, Send, Mail, ExternalLink, ChevronRight, Clock, Tag, Share2, Copy, BookOpen, BarChart3, FileText, Layers, Settings } from 'lucide-react';
+import { Menu, X, ArrowRight, Sparkles, Code2, Cpu, Send, Mail, ExternalLink, ChevronRight, Clock, Tag, Share2, Copy, BookOpen, BarChart3, FileText, Layers, Settings } from 'lucide-react';
 import { BlogPost, WorkItem, ViewState } from './types';
 import { supabase } from './supabaseClient';
 import AdminPanel from './AdminPanel';
@@ -116,24 +116,6 @@ const SELECTED_WORKS: WorkItem[] = [
     content: BLOG_POSTS.find(p => p.id === 'singularity-self')?.content, // Reuse content
     tags: ["Philosophy", "Identity", "Future"],
     image: "https://picsum.photos/seed/singularity/800/600"
-  },
-  {
-    id: "aether-os",
-    type: "project",
-    title: "Aether OS",
-    subtext: "Spatial Computing Operating System",
-    description: "A concept web-based operating system designed for the spatial computing era, removing the constraints of 2D windows.",
-    content: `
-      <p>Traditional operating systems are stuck in the desktop metaphor of the 1980s. Aether OS reimagines the workspace as an infinite 3D canvas.</p>
-      <h3>Core Concepts</h3>
-      <ul>
-        <li><strong>Spatial Context:</strong> Files are organized by proximity and relationship, not folders.</li>
-        <li><strong>Gesture First:</strong> Designed primarily for hand-tracking inputs via WebXR.</li>
-        <li><strong>Fluid Multitasking:</strong> Applications exist in a shared volume, interacting with each other physically.</li>
-      </ul>
-    `,
-    tags: ["Spatial Computing", "Three.js", "WebXR", "UI/UX"],
-    image: "https://picsum.photos/seed/aether/800/600"
   }
 ];
 
@@ -595,18 +577,23 @@ const PostDetail = ({ post, onBack }: { post: BlogPost | null, onBack: () => voi
       </header>
 
       {/* Wide Hero Image */}
-      <div className="w-full max-w-[1400px] mx-auto px-4 mb-20">
-         <div className="w-full aspect-[21/9] bg-slate-900 rounded-xl overflow-hidden border border-slate-800 relative shadow-2xl">
+      {(post.featured_image || post.og_image) && (
+        <div className="w-full max-w-[1400px] mx-auto px-4 mb-20">
+          <div className="w-full aspect-[21/9] bg-slate-900 rounded-xl overflow-hidden border border-slate-800 relative shadow-2xl">
             <div className="absolute inset-0 bg-slate-800 animate-pulse" />
-            <img 
-              src={`https://picsum.photos/seed/${post.id}/1600/800`} 
-              alt={post.title} 
+            <img
+              src={post.featured_image || post.og_image || `https://picsum.photos/seed/${post.id}/1600/800`}
+              alt={post.title}
               className="w-full h-full object-cover relative z-10 opacity-90"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${post.id}/1600/800`;
+              }}
             />
             {/* Gradient Overlay for integration */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent z-20 opacity-80"></div>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Two-Column Layout */}
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-32">
@@ -668,9 +655,7 @@ const PostDetail = ({ post, onBack }: { post: BlogPost | null, onBack: () => voi
               <div className="pt-8 border-t border-slate-800/50">
                  <p className="uppercase tracking-widest text-xs mb-4 text-slate-500 font-bold">Share</p>
                  <div className="flex gap-4 text-slate-500">
-                    <Twitter className="w-5 h-5 hover:text-white cursor-pointer transition-colors" />
-                    <Linkedin className="w-5 h-5 hover:text-white cursor-pointer transition-colors" />
-                    <Copy className="w-5 h-5 hover:text-white cursor-pointer transition-colors" />
+                    <Copy className="w-5 h-5 hover:text-white cursor-pointer transition-colors" title="Copy link" />
                  </div>
               </div>
 
@@ -681,6 +666,9 @@ const PostDetail = ({ post, onBack }: { post: BlogPost | null, onBack: () => voi
         <div className="lg:col-span-8 lg:col-start-5">
            <div className="prose prose-invert prose-xl max-w-none
               prose-headings:scroll-mt-28 prose-headings:font-display
+
+              prose-h1:text-5xl prose-h1:font-bold prose-h1:text-white prose-h1:mt-20 prose-h1:mb-12 prose-h1:tracking-tight prose-h1:leading-tight
+              prose-h1:bg-gradient-to-r prose-h1:from-cyan-400 prose-h1:to-cyan-600 prose-h1:bg-clip-text prose-h1:text-transparent
 
               prose-h2:text-4xl prose-h2:font-bold prose-h2:text-white prose-h2:mt-24 prose-h2:mb-10 prose-h2:tracking-tight prose-h2:leading-tight
               prose-h2:border-b prose-h2:border-slate-800/50 prose-h2:pb-6
@@ -694,14 +682,23 @@ const PostDetail = ({ post, onBack }: { post: BlogPost | null, onBack: () => voi
 
               prose-strong:text-white prose-strong:font-bold prose-strong:bg-gradient-to-r prose-strong:from-cyan-400/10 prose-strong:to-transparent prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded
 
+              prose-em:text-cyan-100 prose-em:italic prose-em:font-normal
+
+              prose-code:text-cyan-300 prose-code:bg-slate-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-['']
+
+              prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:rounded-lg prose-pre:p-6 prose-pre:my-8 prose-pre:overflow-x-auto
+
               prose-blockquote:border-l-4 prose-blockquote:border-cyan-500/80 prose-blockquote:pl-8 prose-blockquote:pr-8 prose-blockquote:py-6
               prose-blockquote:text-[1.35rem] prose-blockquote:text-slate-100 prose-blockquote:font-normal prose-blockquote:italic prose-blockquote:leading-relaxed
               prose-blockquote:my-20 prose-blockquote:bg-gradient-to-r prose-blockquote:from-cyan-950/20 prose-blockquote:to-transparent
               prose-blockquote:rounded-r-lg prose-blockquote:shadow-xl prose-blockquote:shadow-cyan-950/20
 
               prose-ul:my-10 prose-ul:list-none prose-ul:space-y-4
+              prose-ol:my-10 prose-ol:list-decimal prose-ol:space-y-4 prose-ol:pl-6 prose-ol:marker:text-cyan-400 prose-ol:marker:font-bold
               prose-li:relative prose-li:pl-8 prose-li:mb-3 prose-li:text-slate-200 prose-li:text-[1.1rem] prose-li:leading-relaxed
               prose-li:before:content-['→'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:top-0 prose-li:before:text-cyan-400 prose-li:before:font-bold
+
+              prose-img:rounded-lg prose-img:shadow-2xl prose-img:my-12
            ">
               <div dangerouslySetInnerHTML={{ __html: processedContent }} />
            </div>
@@ -760,7 +757,7 @@ const ProjectDetail = ({ project, onBack }: { project: WorkItem | null, onBack: 
         <div>
           <div className="flex flex-wrap gap-3 mb-6">
             <span className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-xs text-purple-400 font-mono uppercase tracking-wider">
-               Case Study
+               Work
             </span>
             {project.tags.map(tag => (
               <span key={tag} className="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-400 font-mono">
@@ -807,7 +804,7 @@ const ProjectDetail = ({ project, onBack }: { project: WorkItem | null, onBack: 
   );
 };
 
-const PortfolioGrid = ({ onItemClick }: { onItemClick: (item: WorkItem) => void }) => {
+const PortfolioGrid = ({ onItemClick, works }: { onItemClick: (item: WorkItem) => void, works: WorkItem[] }) => {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
       <h2 className="text-3xl font-light mb-16 text-slate-100 border-l-2 border-purple-500 pl-6">
@@ -815,7 +812,7 @@ const PortfolioGrid = ({ onItemClick }: { onItemClick: (item: WorkItem) => void 
       </h2>
 
       <div className="grid md:grid-cols-2 gap-8">
-        {SELECTED_WORKS.map((work, idx) => (
+        {works.map((work, idx) => (
           <div 
             key={work.id} 
             onClick={() => onItemClick(work)}
@@ -827,7 +824,7 @@ const PortfolioGrid = ({ onItemClick }: { onItemClick: (item: WorkItem) => void 
             
             <div className="absolute top-8 left-8 z-20">
               <span className={`px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase border backdrop-blur-md ${work.type === 'project' ? 'bg-purple-500/20 border-purple-500/50 text-purple-200' : 'bg-cyan-500/20 border-cyan-500/50 text-cyan-200'}`}>
-                {work.type === 'project' ? 'Case Study' : 'Thought'}
+                {work.type === 'project' ? 'Work' : 'Thought'}
               </span>
             </div>
             
@@ -950,10 +947,12 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<WorkItem | null>(null);
   const [showAdmin, setShowAdmin] = useState(false);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(BLOG_POSTS);
+  const [works, setWorks] = useState<WorkItem[]>(SELECTED_WORKS);
 
-  // Fetch blog posts from Supabase
+  // Fetch blog posts and works from Supabase
   useEffect(() => {
     fetchBlogPosts();
+    fetchWorks();
   }, []);
 
   // Admin panel keyboard shortcut (Ctrl/Cmd + Shift + A)
@@ -989,6 +988,27 @@ export default function App() {
     }
   };
 
+  const fetchWorks = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('work_items')
+        .select('*')
+        .eq('published', true)
+        .order('display_order', { ascending: true });
+
+      if (data && data.length > 0) {
+        setWorks(data);
+      } else {
+        // Use hardcoded works as fallback
+        setWorks(SELECTED_WORKS);
+      }
+    } catch (error) {
+      // If Supabase fails, use hardcoded works
+      console.log('Using hardcoded works');
+      setWorks(SELECTED_WORKS);
+    }
+  };
+
   const handleWorkClick = (work: WorkItem) => {
     if (work.type === 'blog') {
         const fullPost = blogPosts.find(p => p.id === work.id);
@@ -1013,10 +1033,16 @@ export default function App() {
       case ViewState.HOME:
         return (
           <>
+            <SEOHead
+              title="HOLLYFRANK - Moving Thought Forward"
+              description="A thought and design studio exploring what's possible in a post-internet world. Built by founders and operators. Powered by curiosity. Made for people building the next chapter."
+              keywords={['design', 'technology', 'AI', 'future', 'innovation', 'thought leadership', 'blog', 'portfolio', 'startup', 'philosophy']}
+              ogType="website"
+            />
             <ScrollRevealHero />
             <StudioStatement setView={setView} />
             <div className="bg-slate-950 border-t border-slate-900">
-               <PortfolioGrid onItemClick={handleWorkClick} />
+               <PortfolioGrid onItemClick={handleWorkClick} works={works} />
             </div>
             <div className="bg-slate-900/20 py-24 border-t border-slate-900">
               <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 max-w-6xl">
@@ -1035,7 +1061,7 @@ export default function App() {
       case ViewState.PORTFOLIO:
         return (
             <div className="min-h-screen pt-32">
-                <PortfolioGrid onItemClick={handleWorkClick} />
+                <PortfolioGrid onItemClick={handleWorkClick} works={works} />
             </div>
         );
       case ViewState.CONTACT:
@@ -1072,6 +1098,7 @@ export default function App() {
           onClose={() => {
             setShowAdmin(false);
             fetchBlogPosts(); // Refresh posts when closing admin
+            fetchWorks(); // Refresh works when closing admin
           }}
         />
       )}

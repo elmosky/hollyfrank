@@ -3,7 +3,38 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Primary Meta Tags -->
     <title>HOLLYFRANK - Moving Thought Forward</title>
+    <meta name="title" content="HOLLYFRANK - Moving Thought Forward" />
+    <meta name="description" content="A thought and design studio exploring what's possible in a post-internet world. Built by founders and operators. Powered by curiosity." />
+    <meta name="keywords" content="design, technology, AI, future, innovation, thought leadership, blog, portfolio" />
+    <meta name="author" content="HOLLYFRANK" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="theme-color" content="#020617" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hollyfrank.com/" />
+    <meta property="og:title" content="HOLLYFRANK - Moving Thought Forward" />
+    <meta property="og:description" content="A thought and design studio exploring what's possible in a post-internet world. Built by founders and operators. Powered by curiosity." />
+    <meta property="og:image" content="https://hollyfrank.com/og-image.png" />
+    <meta property="og:site_name" content="HOLLYFRANK" />
+
+    <!-- Twitter meta tags removed - no social media accounts currently -->
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hollyfrank.com/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
@@ -41,6 +72,63 @@
       /* Ensure root takes full height */
       #root {
         min-height: 100vh;
+      }
+
+      /* React Quill Editor Customization */
+      .quill-dark .ql-container {
+        min-height: 400px;
+        font-size: 16px;
+      }
+
+      .quill-dark .ql-editor {
+        min-height: 400px;
+        padding: 20px;
+      }
+
+      .quill-dark .ql-toolbar {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background: #f8fafc;
+        border-color: #e2e8f0;
+      }
+
+      .quill-dark .ql-container {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        background: white;
+        border-color: #e2e8f0;
+      }
+
+      .quill-dark .ql-editor.ql-blank::before {
+        color: #94a3b8;
+        font-style: normal;
+      }
+
+      .quill-dark .ql-editor h1 {
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      .quill-dark .ql-editor h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      .quill-dark .ql-editor h3 {
+        font-size: 1.25em;
+        font-weight: bold;
+      }
+
+      .quill-dark .ql-editor p {
+        margin-bottom: 1em;
+      }
+
+      .quill-dark .ql-editor blockquote {
+        border-left: 4px solid #22d3ee;
+        padding-left: 16px;
+        margin: 1em 0;
+        color: #475569;
+        font-style: italic;
       }
     </style>
   </head>
