@@ -45,20 +45,81 @@ const BLOG_POSTS: BlogPost[] = [
     date: "November 12, 2025",
     summary: "When 'I' becomes a network: An exploration of digital identity and the dissolution of the ego in a hyper-connected age.",
     content: `
-      <p class="lead text-xl md:text-2xl text-slate-300 font-light leading-relaxed mb-12">The modern concept of "self" is undergoing a radical fragmentation. We are no longer singular entities but distributed networks of data, interactions, and digital footprints.</p>
-      
-      <p>As we offload more of our cognition to algorithms and our memory to the cloud, the boundary between the biological individual and the digital extension blurs. This isn't just a philosophical curiosity; it's a fundamental shift in how we must design interfaces.</p>
-      
+      <p class="lead">The modern concept of "self" is undergoing a radical fragmentation. We are no longer singular entities but distributed networks of data, interactions, and digital footprints scattered across servers, feeds, and cloud architectures.</p>
+
+      <p>As we offload more of our cognition to algorithms and our memory to the cloud, the boundary between the biological individual and the digital extension blurs. This isn't just a philosophical curiosity; it's a fundamental shift in how we must design interfaces, understand identity, and navigate the emerging landscape of human consciousness.</p>
+
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop" alt="Network visualization representing distributed identity" />
+
       <h2>The Networked Ego</h2>
-      <p>We are designing for the "Networked Self" — a user who exists in multiple states simultaneously. The user is no longer a static point of origin for action, but a node in a continuous flow of information.</p>
-      
+
+      <p>We are designing for the "Networked Self" — a user who exists in multiple states simultaneously. The user is no longer a static point of origin for action, but a node in a continuous flow of information. Your "self" in the morning checking email is algorithmically different from your "self" scrolling late at night.</p>
+
       <p>Consider the "feed." It is not content we consume; it is a reflection of our digital shadow, curated by algorithms that know our preferences better than we do. In this loop, who is the author of the experience? The user who clicks, or the algorithm that predicts the click?</p>
-      
+
+      <p>This question isn't academic. It has real implications for how we build products, structure information, and ultimately, how we understand agency in a world where prediction engines mediate every interaction.</p>
+
+      <h3>The Fragmentation Problem</h3>
+
+      <p>Your identity online is not singular. You are:</p>
+
+      <ul>
+        <li>A cluster of behavioral patterns to Google</li>
+        <li>A graph of relationships to Facebook</li>
+        <li>A consumption history to Amazon</li>
+        <li>A professional persona on LinkedIn</li>
+        <li>An anonymous voice on Reddit</li>
+      </ul>
+
+      <p>Each platform holds a different fragment of you. And increasingly, you're not even consistent across those fragments. The "you" that exists on Twitter might hold different political views than the "you" that posts family photos on Instagram.</p>
+
       <h2>Designing for Fluidity</h2>
-      <p>When we design for the future, we must stop designing for users as static points and start designing for users as dynamic flows. Interfaces must become fluid, adapting not just to screen size, but to context, intent, and cognitive load. The "Self" is no longer a noun; it is a verb.</p>
+
+      <p>When we design for the future, we must stop designing for users as static points and start designing for users as dynamic flows. Interfaces must become fluid, adapting not just to screen size, but to context, intent, and cognitive load.</p>
+
+      <p>The "Self" is no longer a noun; it is a verb. You are not a user — you are <em>using</em>. You are not a viewer — you are <em>viewing</em>. This shift from state to process changes everything about how we think about personalization, privacy, and interface design.</p>
+
+      <blockquote>
+        "The future of identity is not about building better profiles. It's about building better flows."
+      </blockquote>
+
+      <h3>Context as Core</h3>
+
+      <p>Future interfaces won't ask "who are you?" They'll ask "what are you trying to do right now?" Context becomes the primary input. Location, time of day, recent activity, biometric state — all feed into a dynamic model of intent.</p>
+
+      <p>This is already happening. Your phone knows when you're driving. Your watch knows when you're sleeping. Your browser knows what you're researching. The question is: who controls this contextual layer?</p>
 
       <h2>The End of Privacy?</h2>
+
       <p>If the self is a network, then privacy is not about hiding information, but about controlling the flow. The challenge for the next decade will be building tools that allow us to manage our distributed selves without losing the cohesion of our identity.</p>
+
+      <p>We need new metaphors. "Privacy" as a concept emerged in an era when the self was local, physical, bounded. But when your "self" exists across dozens of platforms, hundreds of databases, and thousands of algorithmic inferences, what does privacy even mean?</p>
+
+      <h3>From Privacy to Flow Control</h3>
+
+      <p>The answer might be: privacy is flow control. Not binary (public/private), but granular control over how information moves through networks. Who gets to see what? When? Under what conditions? And critically: who gets to make inferences from it?</p>
+
+      <p>This is harder than it sounds. Most people don't want to manage permissions for every piece of data. They want intelligent defaults. They want systems that respect context. They want, in essence, AI that represents their interests rather than the platform's interests.</p>
+
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop" alt="Digital network connections" />
+
+      <h2>Building for the Distributed Self</h2>
+
+      <p>So what does this mean for builders? Three principles:</p>
+
+      <ol>
+        <li><strong>Design for flow, not state.</strong> Stop thinking about "the user" as a fixed entity with a profile. Think about transitions, contexts, modes.</li>
+        <li><strong>Make the algorithm visible.</strong> If you're using ML to personalize, show the user what the system thinks it knows. Let them correct it.</li>
+        <li><strong>Build tools for coherence.</strong> Help people maintain a sense of self across fragments. Don't just scatter their data — give them ways to understand and navigate it.</li>
+      </ol>
+
+      <h2>The Path Forward</h2>
+
+      <p>We're in the early stages of understanding what it means to be human in a networked age. The "self" as a coherent, continuous entity is a useful fiction — but it's being stress-tested by technologies that expose its constructedness.</p>
+
+      <p>The question isn't whether this fragmentation will continue. It will. The question is: will we build systems that exploit this fragmentation, or systems that help us navigate it with agency and clarity?</p>
+
+      <p>The singularity of self isn't coming. It's already here. We're living in it. Now we need to build tools worthy of the moment.</p>
     `,
     tags: ["Philosophy", "Identity", "Future"]
   },
@@ -670,12 +731,15 @@ const PostDetail = ({ post, onBack }: { post: BlogPost | null, onBack: () => voi
               prose-h1:text-5xl prose-h1:font-bold prose-h1:text-white prose-h1:mt-20 prose-h1:mb-12 prose-h1:tracking-tight prose-h1:leading-tight
               prose-h1:bg-gradient-to-r prose-h1:from-cyan-400 prose-h1:to-cyan-600 prose-h1:bg-clip-text prose-h1:text-transparent
 
-              prose-h2:text-4xl prose-h2:font-bold prose-h2:text-white prose-h2:mt-24 prose-h2:mb-10 prose-h2:tracking-tight prose-h2:leading-tight
-              prose-h2:border-b prose-h2:border-slate-800/50 prose-h2:pb-6
+              prose-h2:text-4xl prose-h2:font-extrabold prose-h2:text-white prose-h2:mt-20 prose-h2:mb-8 prose-h2:tracking-tight prose-h2:leading-[1.2]
+              prose-h2:border-b-2 prose-h2:border-cyan-500/30 prose-h2:pb-4
+              prose-h2:bg-gradient-to-r prose-h2:from-white prose-h2:to-slate-300 prose-h2:bg-clip-text
 
-              prose-h3:text-2xl prose-h3:font-semibold prose-h3:text-slate-50 prose-h3:mt-16 prose-h3:mb-6 prose-h3:leading-snug
+              prose-h3:text-2xl prose-h3:font-bold prose-h3:text-cyan-400 prose-h3:mt-12 prose-h3:mb-5 prose-h3:leading-snug
 
-              prose-p:text-slate-200 prose-p:text-[1.1rem] prose-p:leading-[1.9] prose-p:font-normal prose-p:mb-8 prose-p:tracking-wide
+              [&_.lead]:text-2xl [&_.lead]:text-slate-300 [&_.lead]:font-light [&_.lead]:leading-relaxed [&_.lead]:mb-12 [&_.lead]:border-l-4 [&_.lead]:border-cyan-500/50 [&_.lead]:pl-6
+
+              prose-p:text-slate-200 prose-p:text-[1.125rem] prose-p:leading-[1.85] prose-p:font-normal prose-p:mb-6 prose-p:tracking-normal
 
               prose-a:text-cyan-400 prose-a:font-medium prose-a:no-underline prose-a:underline prose-a:decoration-cyan-500/30 prose-a:decoration-2 prose-a:underline-offset-4
               hover:prose-a:decoration-cyan-400 hover:prose-a:text-cyan-300 hover:prose-a:decoration-2 prose-a:transition-all
@@ -686,19 +750,20 @@ const PostDetail = ({ post, onBack }: { post: BlogPost | null, onBack: () => voi
 
               prose-code:text-cyan-300 prose-code:bg-slate-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-['']
 
-              prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:rounded-lg prose-pre:p-6 prose-pre:my-8 prose-pre:overflow-x-auto
+              prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:rounded-lg prose-pre:p-6 prose-pre:my-10 prose-pre:overflow-x-auto
 
-              prose-blockquote:border-l-4 prose-blockquote:border-cyan-500/80 prose-blockquote:pl-8 prose-blockquote:pr-8 prose-blockquote:py-6
-              prose-blockquote:text-[1.35rem] prose-blockquote:text-slate-100 prose-blockquote:font-normal prose-blockquote:italic prose-blockquote:leading-relaxed
-              prose-blockquote:my-20 prose-blockquote:bg-gradient-to-r prose-blockquote:from-cyan-950/20 prose-blockquote:to-transparent
-              prose-blockquote:rounded-r-lg prose-blockquote:shadow-xl prose-blockquote:shadow-cyan-950/20
+              prose-blockquote:border-l-4 prose-blockquote:border-cyan-500 prose-blockquote:pl-8 prose-blockquote:pr-8 prose-blockquote:py-8
+              prose-blockquote:text-[1.5rem] prose-blockquote:text-white prose-blockquote:font-light prose-blockquote:italic prose-blockquote:leading-relaxed
+              prose-blockquote:my-16 prose-blockquote:bg-gradient-to-r prose-blockquote:from-cyan-950/30 prose-blockquote:to-transparent
+              prose-blockquote:rounded-r-xl prose-blockquote:shadow-2xl prose-blockquote:shadow-cyan-950/30
 
-              prose-ul:my-10 prose-ul:list-none prose-ul:space-y-4
-              prose-ol:my-10 prose-ol:list-decimal prose-ol:space-y-4 prose-ol:pl-6 prose-ol:marker:text-cyan-400 prose-ol:marker:font-bold
-              prose-li:relative prose-li:pl-8 prose-li:mb-3 prose-li:text-slate-200 prose-li:text-[1.1rem] prose-li:leading-relaxed
-              prose-li:before:content-['→'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:top-0 prose-li:before:text-cyan-400 prose-li:before:font-bold
+              prose-ul:my-8 prose-ul:list-none prose-ul:space-y-3 prose-ul:bg-slate-900/30 prose-ul:p-6 prose-ul:rounded-lg prose-ul:border prose-ul:border-slate-800/50
+              prose-ol:my-8 prose-ol:list-decimal prose-ol:space-y-3 prose-ol:pl-6 prose-ol:marker:text-cyan-400 prose-ol:marker:font-bold prose-ol:marker:text-lg
+              prose-li:relative prose-li:pl-7 prose-li:text-slate-200 prose-li:text-[1.125rem] prose-li:leading-relaxed
+              prose-li:before:content-['→'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:top-[2px] prose-li:before:text-cyan-400 prose-li:before:font-bold prose-li:before:text-lg
 
-              prose-img:rounded-lg prose-img:shadow-2xl prose-img:my-12
+              prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-16 prose-img:w-full prose-img:border prose-img:border-slate-800/50
+              prose-img:ring-1 prose-img:ring-slate-700/20
            ">
               <div dangerouslySetInnerHTML={{ __html: processedContent }} />
            </div>
