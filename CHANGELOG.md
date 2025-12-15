@@ -10,6 +10,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed - 2025-12-11
 
+#### Blog Post Template Improvements
+- **H2 headings**: Increased to 4xl, extrabold, white gradient, cyan border bottom
+- **H3 headings**: Bold, cyan color for better visual hierarchy
+- **Lead paragraphs**: Added `.lead` class with larger text, left border accent
+- **Body text**: Optimized line-height and spacing (1.85)
+- **Blockquotes**: Larger text (1.5rem), white color, enhanced shadows
+- **Lists**: Added background boxes, improved bullets with cyan arrows
+- **Images**: Larger margins (my-16), rounded corners, borders, ring effects
+- **Spacing**: More breathing room between all elements
+
+#### Content Updates
+- Expanded "The Singularity of Self" article from ~500 to ~1500 words
+- Added 2 full-width images with proper alt text
+- Added comprehensive sections: Networked Ego, Designing for Fluidity, Privacy
+- Added H3 subsections: Fragmentation Problem, Context as Core, Flow Control
+- Added lists, blockquotes, and numbered principles
+- Made content more actionable with builder guidelines
+
+### Changed - 2025-12-11
+
 #### File Organization
 - Created `/public/` folder for static assets
 - Moved `og-image.png` and `favicon.png` to `/public/` folder
